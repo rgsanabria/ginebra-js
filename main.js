@@ -18,6 +18,7 @@ function comprarBebida() {
     alert("se agrego su bebida al carrito");
   
 }
+
 }
 
 function finalizarCompra() {
@@ -32,9 +33,7 @@ function finalizarCompra() {
     }
 
  }
-
-
-
+ 
 let bebida;
 let fernet = 2000;
 let gin = 4000;
@@ -42,21 +41,19 @@ let energizante = 600;
 saludar();
 comprarBebida();
 finalizarCompra();
-comprarBebida();
-finalizarCompra();
-comprarBebida();
-finalizarCompra();
+
 let opcion = prompt("Ingrese una opcion: \n 1: seguir comprando  \n 2: finalizar compra \n 3: Vaciar ");
 
 
 while (opcion !== "3") {
-    if (opcion === "1"){
+    if (opcion=== "1"){
         comprarBebida();
         finalizarCompra();
     }
-    if (opcion === "2") {
+    if (opcion=== "2") {
         finalizarCompra();
-        
+        opcion = "3";
     }
 }
 alert ("Desea volver al menu principal?");
+
