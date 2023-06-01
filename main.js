@@ -1,59 +1,72 @@
 function saludar() {
-    let nombre = prompt("ingrese su nombre");
+    let nombre = prompt("¡Hola! Ingrese su nombre por favor");
     alert("Bienvenido/a  " + nombre + " a Ginebra");
 }
 
-function comprarBebida() {
-    bebida = prompt("seleccione una opcion \n 1: fernet \n 2: gin \n 3: energizante");
-
-  if (bebida === "1"){
-    alert("se agrego su bebida al carrito");
-    
-  } 
-  else if (bebida === "2"){
-    alert("se agrego su bebida al carrito");
-   
-  } 
-  else if (bebida === "3"){
-    alert("se agrego su bebida al carrito");
-  
-}
-
-}
-
-function finalizarCompra() {
-    if (bebida === "1") {
-    alert ("El monto de su eleccion es  " + fernet * 1.21);
-    }
-    else if (bebida === "2"){
-        alert ("El monto de su eleccion es  " + gin * 1.21);
-    }
-    else if (bebida === "3"){
-        alert ("El monto de su eleccion es  " + energizante * 1.21); 
-    }
-
- }
- 
-let bebida;
-let fernet = 2000;
-let gin = 4000;
-let energizante = 600;
-saludar();
-comprarBebida();
-finalizarCompra();
-
-let opcion = prompt("Ingrese una opcion: \n 1: seguir comprando  \n 2: finalizar compra \n 3: Vaciar ");
-
-
-while (opcion !== "3") {
-    if (opcion=== "1"){
-        comprarBebida();
-        finalizarCompra();
-    }
-    if (opcion=== "2") {
-        finalizarCompra();
-        opcion = "3";
+class Bebidas{
+    constructor(marca, precio, tamaño){
+        this.marca =marca;
+        this.precio =precio;
+        this.tamaño =tamaño;
     }
 }
-alert ("Desea volver al menu principal?");
+
+let precios = [
+    {marca: "Fernet", precio:"2500"},
+    {marca: "Smirnoff", precio:"3000"},
+    {marca: "Jagger", precio:"4000"},
+    {marca: "CocaCola", precio:"800"},
+    {marca: "Energiaznte", precio:"500"},
+]
+
+saludar()
+
+function cargarProducto(){
+ let marca = prompt("Ingrese la marca de la bebida elegida. Ej: Fernet");
+ let precio = parseInt(prompt("Ingrese el precio"));
+ let tamaño = prompt("Ingrese el tamaño");
+ //creacion de un objeto//
+ const nuevaBebida = new Bebidas(marca, precio, tamaño)
+ arrayCarrito.push(nuevaBebida)
+ alert("Producto añadido en el carrito")
+}
+
+function verCarrito(){
+    arrayCarrito.forEach((producto)=>{
+     alert(`Usted eligio la bebida ${producto.marca} por un total de ${producto.precio} en tamaño ${producto.tamaño}`)
+    })
+}
+
+function mostrarOferta(){
+    const ofertas = precios.filter((bebida)=> bebida.precio < 3000)
+    for(const oferta of ofertas){
+        alert(`Estas son las ofertas de hoy: bebidas ${oferta.marca} a un total de ${oferta.precio}`)
+    }
+}
+
+function finalizarCompra(){
+    const total = arrayCarrito.reduce((acc, el)=> acc +el.precio, 0);
+    alert(`Gracias por su compra, el total es de ${total}`);
+}
+
+let arrayCarrito = []
+
+let opcion = prompt("Ingrese una opcion: \n 1: Cargar productos  \n 2: Ver ofertas \n 3: Ver carrito \n 4: Finalizar compra \n 5: Salir ");
+
+while (opcion !== "5") {
+    if (opcion === "1"){
+        cargarProducto(arrayCarrito)
+    }
+    if (opcion === "2") {
+       mostrarOferta()
+    }
+    if (opcion === "3"){
+        verCarrito()
+    }
+    if (opcion === "4"){
+        finalizarCompra()
+    }
+    opcion = prompt ("Ingrese una nueva opcion: \n 1: Seguir comprando  \n 2: Ver ofertas \n 3: Ver carrito \n 4: Finalizar compra \n 5: Salir ")
+}
+alert ("Muchas gracias por su compra");
 
