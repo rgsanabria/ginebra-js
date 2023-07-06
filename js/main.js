@@ -60,6 +60,20 @@ const procesarCompra = document.querySelector("#procesarCompra");
 const totalProceso = document.querySelector("#totalProceso");
 const formulario = document.querySelector('#procesar-pago')
 
+if (activarFuncion) {
+  activarFuncion.addEventListener("click", procesarPedido);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+  mostrarCarrito();
+  document.querySelector("#activarFuncion").click(procesarPedido);
+});
+if(formulario){
+  formulario.addEventListener('submit', enviarCompra)
+}
+
 
 
 if (vaciarCarrito) {
@@ -79,7 +93,7 @@ if (procesarCompra) {
         confirmButtonText: "Aceptar",
       });
     } else {
-      location.href = "compra.html";
+      location.href = "./paginas/compras.html";
     }
   });
 }
@@ -199,6 +213,61 @@ function procesarPedido() {
 }
 
 
- localStorage.clear()
+function enviarCompra(e){
+  e.preventDefault()
+  const cliente = document.querySelector('#cliente').value
+  const email = document.querySelector('#correo').value
 
- 
+  if(email === '' || cliente == ''){
+    Swal.fire({
+      title: "¡Completa tu email y nombre!",
+      text: "Completa el formulario",
+      icon: "error",
+      confirmButtonText: "Aceptar",
+  })
+} else {
+
+ const btn = document.getElementById('button');
+
+// document.getElementById('procesar-pago')
+//  .addEventListener('submit', function(event) {
+//    event.preventDefault();
+
+  btn.value = 'Enviando...';
+
+  const serviceID = 'default_service';
+  const templateID = 'template_qxwi0jn';
+
+  emailjs.sendForm(serviceID, templateID, this)
+   .then(() => {
+     btn.value = 'Finalizar compra';
+     alert('Correo enviado!');
+   }, (err) => {
+     btn.value = 'Finalizar compra';
+     alert(JSON.stringify(err));
+   });
+   
+  const spinner = document.querySelector('#spinner')
+  spinner.classList.add('d-flex')
+  spinner.classList.remove('d-none')
+
+  setTimeout(() => {
+    spinner.classList.remove('d-flex')
+    spinner.classList.add('d-none')
+    formulario.reset()
+
+    const alertExito = document.createElement('p')
+    alertExito.classList.add('alert', 'alerta', 'd-block', 'text-center', 'col-12', 'mt-2', 'alert-success')
+    alertExito.textContent = 'Compra realizada correctamente'
+    formulario.appendChild(alertExito)
+
+    setTimeout(() => {
+      alertExito.remove()
+    }, 3000)
+
+
+  }, 3000)
+}
+
+ localStorage.clear()
+}
