@@ -16,6 +16,10 @@ body{
     display:flex;
     align-items: center;
     gap:2rem;
+    
+}
+.mt-5{
+    margin: 4rem;
 }
 .img-carrito{
     width:200px;
