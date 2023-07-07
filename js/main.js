@@ -47,6 +47,22 @@ const stockBebidas = [
     precio: 2200,
     img: "img/gin.jpg",
   },
+  {
+    id: 7,
+    nombre: "Gancia",
+    cantidad: 1,
+    desc: "950ml",
+    precio: 2200,
+    img: "img/gancia.jpg",
+  },
+  {
+    id: 8,
+    nombre: "Chandon",
+    cantidad: 1,
+    desc: "750ml",
+    precio: 3100,
+    img: "img/chandon.jpg",
+  },
   
 ];
 let carrito = [];
