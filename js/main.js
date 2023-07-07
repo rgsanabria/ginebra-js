@@ -5,7 +5,7 @@ const stockBebidas = [
     cantidad: 1,
     desc: "750ml",
     precio: 1800,
-    img: "img/aperol.jpg",
+    img: "../img/aperol.jpg",
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ const stockBebidas = [
     cantidad: 1,
     desc: "700ml",
     precio: 5500,
-    img: "img/absolut.jpg",
+    img: "../img/absolut.jpg",
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ const stockBebidas = [
     cantidad: 1,
     desc: "750ml",
     precio: 1570,
-    img: "img/fernet.jpg",
+    img: "../img/fernet.jpg",
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ const stockBebidas = [
     cantidad: 1,
     desc: "700ml",
     precio: 1650,
-    img: "./img/smirnoff.jpg",
+    img: "../img/smirnoff.jpg",
   },
   {
     id: 5,
@@ -37,7 +37,7 @@ const stockBebidas = [
     cantidad: 1,
     desc: "700ml",
     precio: 7990,
-    img: "img/jager.jpg",
+    img: "../img/jager.jpg",
   },
   {
     id: 6,
@@ -45,7 +45,7 @@ const stockBebidas = [
     cantidad: 1,
     desc: "750ml",
     precio: 2200,
-    img: "img/gin.jpg",
+    img: "../img/gin.jpg",
   },
   {
     id: 7,
@@ -53,7 +53,7 @@ const stockBebidas = [
     cantidad: 1,
     desc: "950ml",
     precio: 2200,
-    img: "img/gancia.jpg",
+    img: "../img/gancia.jpg",
   },
   {
     id: 8,
@@ -61,7 +61,7 @@ const stockBebidas = [
     cantidad: 1,
     desc: "750ml",
     precio: 3100,
-    img: "img/chandon.jpg",
+    img: "../img/chandon.jpg",
   },
   
 ];
